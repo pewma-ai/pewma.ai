@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- Meta tag esencial para el diseño responsivo y compatibilidad móvil -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pewma AI - IA para el Sur Global</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS: TEMA CLARO, FORMAL Y RESPONSIVO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Paleta de colores "Documento Oficial" */
+            --bg-color: #FDFDFD; /* Fondo blanco roto, muy limpio */
+            --text-primary: #2c3e50; /* Azul pizarra oscuro para texto principal */
+            --text-secondary: #596a7b; /* Gris azulado para texto secundario */
+            --accent: #D35400; /* Terracota más sobrio y oscuro */
+            --highlight-bg: rgba(211, 84, 0, 0.07); /* Fondo sutil para la sección de visión */
+        }
+
+        body {
+            /* Tipografía Serif formal y legible */
+            font-family: 'Merriweather', 'Georgia', serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden; /* Previene el scroll horizontal */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            /* Define el ancho fijo estándar para la versión web. */
+            /* En pantallas más pequeñas que 850px, se ajustará al 100% del ancho disponible. */
+            max-width: 850px;
+            width: 100%; /* Asegura que el contenedor ocupe el espacio disponible en móviles */
+            margin: 0 auto;
+            padding: 80px 40px;
+            min-height: 100vh;
+        }
+
+        header {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.1rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.5s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .tagline {
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        section {
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            font-weight: 300;
+        }
+
+        .tagline, .principles p, section > p {
+             color: var(--text-secondary);
+        }
+        
+        section > p, .principles p {
+             font-size: 1.05rem;
+        }
+
+
+        .highlight {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+        
+        em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .principles p {
+            margin-bottom: 25px;
+        }
+
+        .vision-box {
+            background: var(--highlight-bg);
+            border-left: 3px solid var(--accent);
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .vision-box p {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .cta {
+            margin-top: 80px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.2s forwards;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            background: #2c3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        body::before {
+            content: none;
+        }
+
+        /* --- REGLAS PARA COMPATIBILIDAD MÓVIL --- */
+        /* Estas reglas se aplican en pantallas de 768px de ancho o menos. */
+        @media (max-width: 768px) {
+            .container {
+                /* Se reduce el padding en los lados para aprovechar mejor el espacio */
+                padding: 60px 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+            }
+            
+            /* Se ajusta el tamaño de los párrafos para mejor lectura en pantallas pequeñas */
+            p, section > p, .principles p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">PEWMA AI</h1>
+            <p class="tagline">Tecnologías globales para necesidades locales.</p>
+        </header>
+        <section>
+            <p>Pewma AI es una iniciativa con un solo objetivo: <em>adaptar la inteligencia artificial de clase mundial a los sueños y desafíos del Sur Global</em>. Esta es nuestra misión y todo nuestro enfoque. Creemos que para que la IA beneficie verdaderamente a la humanidad, debe reflejar a toda la humanidad.</p>
+        </section>
+
+        <section class="intro">
+            <h2>IA Adaptada a Nuestras Realidades</h2>
+            <p>La actual ola de inteligencia artificial está siendo moldeada por datos, valores y prioridades que no son los nuestros. Aunque sus capacidades avanzan de forma espectacular, persiste una brecha fundamental: esta tecnología aún no habla nuestros idiomas ni comprende nuestras realidades.</p>
+            <p><span class="highlight">Estamos creando Pewma AI para cerrar esa brecha.</span></p>
+            <p>En la cosmovisión mapuche, un <em>pewma</em> es un sueño revelatorio, un modo de recibir conocimiento y sabiduría para que se comparta. En Pewma AI, nos inspiramos en esta visión: transformamos el conocimiento colectivo en acción tecnológica, creando herramientas que nacen de nuestra propia realidad.</p>
+        </section>
+
+        <section class="principles">
+            <h2>Principios Rectores</h2>
+            <p><span class="highlight">Contexto Local.</span> Una IA que no entiende nuestras economías, nuestro tejido social o nuestras lenguas no puede resolver nuestros problemas más urgentes. Estamos comprometidos con la creación de soluciones arraigadas en un profundo respeto por el contexto local, creando tecnología que se sienta nativa, no importada.</p>
+            <p><span class="highlight">Colaboración Abierta.</span> Esta misión es demasiado grande para un solo equipo. Nos fundamos en el principio de la colaboración abierta con la academia, el gobierno e industrias locales. Creemos que compartiendo conocimiento y construyendo juntos, podemos crear un ecosistema de IA vibrante y resiliente en nuestra región.</p>
+            <p><span class="highlight">Adaptación Inteligente.</span> Creemos que el camino más eficaz hacia el impacto no es reinventar los modelos fundacionales desde cero, sino adaptarlos con maestría. Nuestro trabajo se centrará en desarrollar diversos laboratorios para ajustar e integrar la IA de vanguardia con conjuntos de datos locales, asegurando que se convierta en una herramienta para nuestras necesidades específicas.</p>
+            <p><span class="highlight">Seguridad y Ética.</span> Nuestro trabajo se fundamenta en un profundo compromiso con la seguridad y la ética. Estamos al tanto y alineados con los marcos globales que buscan guiar el desarrollo responsable de la IA, como las recomendaciones de la UNESCO y los avances en AI Safety. Para nosotros, la seguridad y la ética humana son el punto de partida: la tecnología debe empoderar, promover la equidad y ser transparente.</p>
+        </section>
+
+        <section>
+            <h2>El Comienzo</h2>
+            <p>Pewma.ai está al inicio de su viaje. Somos una iniciativa fundada en Chile por ingenieros especialistas en AI y ML con profundas raíces en la región, impulsados por una visión clara y una misión definida. Dentro de poco, formaremos un equipo fundador y aceptaremos socios que compartan nuestra convicción de que la próxima ola de IA debe ser construida por y para todos nosotros.</p>
+        </section>
+
+        <div class="cta">
+            <p class="cta-text">Si eres un ingeniero, un investigador, un inversionista o una organización que cree en esta misión, el momento de construir es ahora.</p>
+            <a href="mailto:contacto@pewma.ai" class="cta-button">Conversemos</a>
+        </div>
+    </div>
+</body>
+</html>
+
