@@ -15,8 +15,6 @@ Enfocado en los tres archivos HTML principales (`index.html`, `contacto.html`, `
 | 9 de agosto de 2025 | 1.0 | Análisis brownfield inicial de la página de aterrizaje única. | Winston (Arquitecto) |
 | 10 de agosto de 2025 | 2.0 | Actualizado para reflejar la estructura multipágina y la integración de EmailJS y Google Analytics. | Sarah (PO) |
 
-Exportar a Hojas de cálculo
-
 ## Referencia rápida - Archivos clave
 
 - **`index.html`**: La página de aterrizaje principal.
@@ -39,8 +37,6 @@ El proyecto Pewma.ai es un sitio web estático multipágina construido con HTML5
 | Manejo de formularios | EmailJS | SDK v4 | Servicio del lado del cliente para enviar correos sin backend. |
 | Analítica | Google Analytics 4 | `gtag.js` | Script de seguimiento en cliente para analítica de usuarios. |
 | Fuentes | Google Fonts | `Merriweather` | Dependencia externa para tipografía. |
-
-Exportar a Hojas de cálculo
 
 ### Verificación de la estructura del repositorio
 
