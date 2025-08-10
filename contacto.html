@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Pewma AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS: TEMA CLARO, FORMAL Y RESPONSIVO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #FDFDFD;
+            --text-primary: #2c3e50;
+            --text-secondary: #596a7b;
+            --accent: #D35400;
+            --highlight-bg: rgba(211, 84, 0, 0.07);
+            --border-color: #ccc;
+        }
+
+        body {
+            font-family: 'Merriweather', 'Georgia', serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 40px;
+            min-height: 100vh;
+        }
+
+        header {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.1rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+            text-decoration: none; /* Añadido para el enlace */
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.5s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .tagline {
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        section {
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            font-weight: 300;
+        }
+        
+        /* --- ESTILOS DEL FORMULARIO DE CONTACTO --- */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: 'Merriweather', 'Georgia', serif;
+            font-size: 1rem;
+            background-color: #fff;
+            color: var(--text-primary);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        form select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 1.2em;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form select:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(211, 84, 0, 0.2);
+        }
+
+        form button[type="submit"] {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+            font-family: 'Merriweather', 'Georgia', serif;
+            font-size: 1rem;
+        }
+        
+        form button[type="submit"]:hover {
+            background: #2c3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 20px;
+            }
+            .logo { font-size: 2rem; }
+            .tagline { font-size: 1.3rem; }
+            p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" style="text-decoration: none;"><h1 class="logo">PEWMA AI</h1></a>
+            <p class="tagline">Tecnologías globales para necesidades locales.</p>
+        </header>
+        
+        <section>
+            <h2>Contacto</h2>
+            <p>Nos encantaría saber de ti. Completa el formulario para compartir tus ideas o iniciar una conversación.</p>
+
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre (requerido)</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email (requerido)</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="profile">¿Cuál es tu perfil? (opcional)</label>
+                    <select id="profile" name="profile">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="ingeniero">Ingeniero/a o Desarrollador/a</option>
+                        <option value="investigador">Investigador/a o Académico/a</option>
+                        <option value="inversionista">Inversionista</option>
+                        <option value="organizacion">Organización / Empresa</option>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="source">¿Cómo supiste de nosotros? (opcional)</label>
+                    <select id="source" name="source">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="redes_sociales">Redes Sociales</option>
+                        <option value="noticias_prensa">Noticias / Prensa</option>
+                        <option value="recomendacion">Recomendación</option>
+                        <option value="busqueda_web">Búsqueda Web</option>
+                        <option value="evento_charla">Evento / Charla</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="question1">¿Cuál es el mayor desafío u oportunidad que ves para la IA en tu región? (opcional)</label>
+                    <textarea id="question1" name="question1" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="question2">¿Qué tipo de herramienta o proyecto de IA tendría el mayor impacto en tu comunidad o industria? (opcional)</label>
+                    <textarea id="question2" name="question2" rows="5"></textarea>
+                </div>
+                
+                <input type="hidden" name="_next" value="https://pewma.ai/gracias.html">
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+
+    <script>
+// Initialize EmailJS with your Public Key
+(function() {
+    emailjs.init({
+      publicKey: "VyQ7XyEsMNpmTbZKa", // Get this from your EmailJS account
+    });
+})();
+
+window.onload = function() {
+    // Add a 'submit' event listener to your form
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // These IDs are from your EmailJS account
+        const serviceID = 'service_v1qlffw';
+        const templateID = 'template_ut9pzpf';
+
+        // Use the sendForm method to send the form data
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                window.location.href = 'https://pewma.ai/gracias.html';
+                // Optionally, reset the form
+                document.getElementById('contact-form').reset();
+            }, (err) => {
+                alert(JSON.stringify(err));
+            });
+    });
+}        
+    </script>
+
+        </section>
+    </div>
+</body>
+</html>
