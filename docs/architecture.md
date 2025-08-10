@@ -1,96 +1,110 @@
-# Pewma.ai Brownfield Architecture Document
+# Documento de Arquitectura del Sitio Web de Pewma.ai v2.0
 
-## Introduction
+## Introducción
 
-This document captures the CURRENT STATE of the Pewma.ai landing page codebase, including its technical debt, workarounds, and real-world patterns. It serves as a reference for AI agents working on enhancements, specifically the upcoming deployment to GitHub Pages and the connection of the custom domain.
+Este documento captura el ESTADO ACTUAL del código del sitio web de Pewma.ai. Evolucionó desde una sola página de aterrizaje a un sitio estático multipágina con integraciones de servicios de terceros. Sirve como referencia para todo el equipo y para agentes de IA.
 
-### Document Scope
+### Alcance del documento
 
-Focused on the single `index.html` file provided, which constitutes the entire current system.
+Enfocado en los tres archivos HTML principales (`index.html`, `contacto.html`, `gracias.html`) y en sus servicios integrados, que constituyen el sistema actual completo.
 
-### Change Log
+### Registro de cambios
 
-| Date | Version | Description | Author |
+| Fecha | Versión | Descripción | Autor |
 | --- | --- | --- | --- |
-| Aug 9, 2025 | 1.0 | Initial brownfield analysis of the landing page. | Winston (Architect) |
+| 9 de agosto de 2025 | 1.0 | Análisis brownfield inicial de la página de aterrizaje única. | Winston (Arquitecto) |
+| 10 de agosto de 2025 | 2.0 | Actualizado para reflejar la estructura multipágina y la integración de EmailJS y Google Analytics. | Sarah (PO) |
 
+Exportar a Hojas de cálculo
 
+## Referencia rápida - Archivos clave
 
-## Quick Reference - Key Files and Entry Points
+- **`index.html`**: La página de aterrizaje principal.
+- **`contacto.html`**: La página que contiene el formulario de contacto.
+- **`gracias.html`**: La página de confirmación mostrada tras un envío exitoso del formulario.
 
-### Critical Files for Understanding the System
+## Arquitectura de alto nivel
 
-- **Main Entry**: `index.html` (Single file containing all structure, styling, and content).
+### Resumen técnico
 
-## High Level Architecture
+El proyecto Pewma.ai es un sitio web estático multipágina construido con HTML5 y CSS3 puros. La arquitectura se mantuvo intencionalmente simple para favorecer el rendimiento y la mantenibilidad, pero se ha mejorado con JavaScript en el cliente para aportar funcionalidad clave. Ahora se integra con el servicio EmailJS para gestionar los envíos del formulario de contacto y con Google Analytics 4 para el análisis de tráfico. Todos los estilos permanecen autocontenidos dentro de cada archivo HTML.
 
-### Technical Summary
+### Stack tecnológico actual
 
-The Pewma.ai project is a single-page, static HTML landing page. It is self-contained, with all CSS styles embedded directly within the `<style>` tags in the document's `<head>`. The architecture is intentionally minimalist, designed for clarity, performance, and ease of deployment on static hosting platforms. It utilizes modern HTML5, CSS variables for theming, and keyframe animations for subtle user engagement. It has no JavaScript dependencies, which simplifies maintenance and maximizes loading speed.
-
-### Actual Tech Stack (from `index.html` analysis)
-
-| Category | Technology | Version/Details | Notes |
+| Categoría | Tecnología | Versión/Detalles | Notas |
 | --- | --- | --- | --- |
-| Structure | HTML5 | `<!DOCTYPE html>` | Standard, semantic HTML structure. |
-| Styling | CSS3 | Embedded in `<style>` | Uses CSS variables (Custom Properties) for theming. |
-| Responsiveness | CSS Media Queries | `@media (max-width: 768px)` | A single breakpoint is used to adapt for mobile devices. |
-| Fonts | Google Fonts | `Merriweather` (300, 400, 700) | External dependency fetched from `fonts.googleapis.com`. |
-| Animations | CSS Keyframes | `@keyframes fadeInUp`, `@keyframes fadeIn` | Used for entry animations to enhance user experience. |
-| Dependencies | None | N/A | The project has no JavaScript or build-tool dependencies. |
+| Estructura | HTML5 | `<!DOCTYPE html>` | HTML semántico estándar en las tres páginas. |
+| Estilos | CSS3 | Embebido en `<style>` | Usa variables CSS y es consistente en todas las páginas. |
+| Scripting en cliente | JavaScript (ES6) | Embebido en `<script>` | Utilizado para habilitar el envío del formulario con EmailJS. |
+| Manejo de formularios | EmailJS | SDK v4 | Servicio del lado del cliente para enviar correos sin backend. |
+| Analítica | Google Analytics 4 | `gtag.js` | Script de seguimiento en cliente para analítica de usuarios. |
+| Fuentes | Google Fonts | `Merriweather` | Dependencia externa para tipografía. |
 
+Exportar a Hojas de cálculo
 
+### Verificación de la estructura del repositorio
 
-### Repository Structure Reality Check
+- **Tipo**: Sitio estático multipágina.
+- **Gestor de paquetes**: Ninguno.
+- **Destacado**: La arquitectura evolucionó para incluir una integración de JavaScript en cliente, un cambio significativo desde el diseño inicial sin JS.
 
-- **Type**: Single File Project.
-- **Package Manager**: None.
-- **Notable**: The entire application is encapsulated in one file, which is ideal for a simple static site but will require structure if functionality grows.
+## Árbol de código y organización de módulos
 
-## Source Tree and Module Organization
+### Estructura del proyecto (actual)
 
-### Project Structure (Actual)
+```plaintext
+pewma-ai.github.io/
+├── docs/
+│   ├── project-brief.md
+│   ├── architecture.md
+│   ├── prd.md
+│   └── stories/
+│       └── ... (archivos de historias)
+├── index.html
+├── contacto.html
+└── gracias.html
+```
 
-Plaintext
+### Módulos clave y propósito
 
-`pewma.ai/
-└── index.html`
+- **Página de inicio (`index.html`)**: Presenta la misión y visión. El CTA principal ahora enlaza a `contacto.html`.
+- **Formulario de contacto (`contacto.html`)**: Contiene el formulario de usuario y la lógica JavaScript para enviar los datos mediante el SDK de EmailJS.
+- **Página de agradecimiento (`gracias.html`)**: Destino tras un envío exitoso del formulario; entrega feedback al usuario y mensajes estratégicos.
 
-### Key Modules and Their Purpose
+## Modelos de datos y APIs
 
-The document is semantically divided into the following sections using standard HTML tags:
+- **Modelos de datos**: Ninguno. El contenido es estático.
+- **APIs de terceros consumidas**:
+  - **EmailJS**: El sitio utiliza el SDK de EmailJS en cliente (`emailjs.sendForm`) para enviar datos del formulario. Requiere un Service ID, Template ID y Public Key, almacenados en el JavaScript del lado del cliente.
 
-- **`<header>`**: Contains the logo (`<h1>`) and tagline (`<p>`).
-- **`<section>`**: Multiple `section` tags are used to segment the content logically (Intro, Principles, The Beginning).
-- **`<div class="cta">`**: A dedicated container for the final Call to Action, including a mailto link.
+## Deuda técnica y problemas conocidos
 
-## Data Models and APIs
+- **Problema resuelto**: La dependencia previa de un enlace `mailto:` se reemplazó por la implementación del formulario de contacto con EmailJS.
+- **Nueva consideración**: La Public Key de EmailJS queda expuesta en el código del lado del cliente (`contacto.html`). Es el diseño previsto por EmailJS, pero es un aspecto arquitectónico importante a considerar.
 
-- **Data Models**: None. The content is static and hardcoded into the HTML.
-- **API Specifications**: None. The project does not interact with any backend APIs.
+## Puntos de integración y dependencias externas
 
-## Technical Debt and Known Issues
+- **Google Fonts**: Provee la familia tipográfica `Merriweather`.
+- **EmailJS**: Gestiona toda la lógica de envío del formulario de contacto. El sitio depende de la disponibilidad de su CDN y API.
+- **Google Analytics**: Provee toda la medición de tráfico del sitio. Depende de que el script `gtag.js` esté disponible.
 
-- **No Technical Debt**: For its intended purpose, the project is clean and efficient.
-- **Potential Issue**: The use of a `mailto:` link for the call to action is simple but relies on the user having a configured email client. For a more robust solution, a future enhancement could involve a contact form integrated with a backend service.
+## Desarrollo y despliegue
 
-## Integration Points and External Dependencies
+### Configuración de desarrollo local
 
-- **Google Fonts**: The only external dependency is the font stylesheet loaded from `fonts.googleapis.com`. If this service were to fail, the browser would fall back to a default serif font.
+1. No se requiere configuración especial. Los archivos HTML pueden abrirse directamente en un navegador.
+2. Probar el envío del formulario requiere conexión a internet para alcanzar la API de EmailJS.
 
-## Development and Deployment
+### Proceso de build y despliegue
 
-### Local Development Setup
+- **Comando de build**: Ninguno.
+- **Despliegue**: Se realiza con `git push` a la rama `main` del repositorio `pewma-ai.github.io`, lo que desencadena automáticamente el build y despliegue de GitHub Pages.
 
-1. No special setup is required.
-2. Open the `index.html` file in any modern web browser to view the page.
+## Estado de pruebas
 
-### Build and Deployment Process
-
-- **Build Command**: None. No build process is necessary.
-- **Deployment**: Manual upload of the `index.html` file to a static web host.
-
-## Testing Reality
-
-- **Current Test Coverage**: None.
-- **Testing Approach**: Manual visual verification across different browser sizes (desktop and mobile) is sufficient for this stage.
+- **Cobertura de pruebas actual**: Ninguna.
+- **Enfoque de pruebas**:
+  - Verificación visual manual de las tres páginas.
+  - Pruebas funcionales manuales del envío del formulario de contacto, incluyendo verificación de recepción del correo y redirección del navegador.
+  - Verificación manual del panel de tráfico en tiempo real de Google Analytics.
+```
