@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracias - Pewma AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS: TEMA CLARO, FORMAL Y RESPONSIVO --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Paleta de colores "Documento Oficial" */
+            --bg-color: #FDFDFD;
+            --text-primary: #2c3e50;
+            --text-secondary: #596a7b;
+            --accent: #D35400;
+            --highlight-bg: rgba(211, 84, 0, 0.07);
+            --border-color: #e0e0e0; /* Color de borde sutil */
+        }
+
+        body {
+            /* Tipografía Serif formal y legible */
+            font-family: 'Merriweather', 'Georgia', serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden; /* Previene el scroll horizontal */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            /* Define el ancho fijo estándar para la versión web. */
+            max-width: 850px;
+            width: 100%; /* Asegura que el contenedor ocupe el espacio disponible en móviles */
+            margin: 0 auto;
+            padding: 80px 40px;
+            min-height: 100vh;
+        }
+
+        header {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 0.1rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.5s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .tagline {
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-top: 10px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+
+        section {
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            font-weight: 300;
+        }
+        
+        ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+        
+        li {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+        }
+
+        .signature {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .signature p {
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+        
+        .signature .name {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .signature .title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--accent);
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            background: #2c3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 60px 20px; }
+            .logo { font-size: 2rem; }
+            .tagline { font-size: 1.3rem; }
+            p, li { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="/" style="text-decoration: none;"><h1 class="logo">PEWMA AI</h1></a>
+            <p class="tagline">Tecnologías globales para necesidades locales.</p>
+        </header>
+        
+        <section>
+            <h2>Gracias. Hemos recibido tu visión.</h2>
+            <p>Gracias por tomarte el tiempo de compartir tus ideas. Cada perspectiva como la tuya es fundamental, porque la misión de Pewma AI se construye precisamente sobre esa base: <strong>identificar desafíos locales y adaptar tecnologías globales para resolverlos</strong>.</p>
+            
+            <h3>¿Y ahora qué? Nuestros próximos pasos</h3>
+            <p>Es importante para nosotros ser transparentes: Pewma AI está en su fase de preparación y fundación. Las ideas y perfiles como el tuyo son la materia prima con la que estamos diseñando nuestros próximos laboratorios y proyectos. Tu mensaje será revisado personalmente por el equipo fundador.</p>
+            
+            <h4>Posibles caminos para tu aporte:</h4>
+            <ul>
+                <li><strong>Si propusiste un desafío:</strong> Lo estamos añadiendo a nuestro mapa de oportunidades para futuros 'Laboratorios de Adaptación'.</li>
+                <li><strong>Si ofreciste tu expertise:</strong> Te hemos añadido a nuestra red de talentos para futuras colaboraciones.</li>
+                <li><strong>Si eres un inversionista u organización:</strong> Nos pondremos en contacto a la brevedad para agendar una conversación.</li>
+            </ul>
+
+            <h3>Mantente en Contacto</h3>
+            <p>Pronto lanzaremos nuestras primeras iniciativas, incluyendo repositorios de código abierto, artículos y charlas técnicas. Te invitamos a mantenerte actualizado con nuestros avances.</p>
+
+            <div class="signature">
+                <p>Atentamente,</p>
+                <p class="name">Juan Pablo Gil Ramírez</p>
+                <p class="title">Ingeniero de Software & MSc in Mathematical Modelling</p>
+            </div>
+
+            <a href="index.html" class="cta-button" style="margin-top: 40px;">Volver al Inicio</a>
+        </section>
+    </div>
+</body>
+</html>
