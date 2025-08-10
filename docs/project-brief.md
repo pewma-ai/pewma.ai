@@ -54,7 +54,7 @@
 
 - **Página de Inicio (`index.html`).**
 - **Flujo de Contacto de Múltiples Páginas** (`contacto.html`, `gracias.html`).
-- **Integración con Formspree.**
+- **Integración con EmailJS.**
 - **Integración de Analítica Web** con Google Analytics en todas las páginas.
 
 ### Fuera del Alcance del MVP
@@ -64,14 +64,14 @@
 ## 7. Consideraciones Técnicas
 
 - **Requisitos de Plataforma:** Sitio web estático, rápido y compatible con navegadores modernos.
-- **Preferencias Tecnológicas:** HTML5/CSS3 puros, Formspree, Google Analytics.
+- **Preferencias Tecnológicas:** HTML5/CSS3 puros, EmailJS, Google Analytics.
 - **Consideraciones de Arquitectura:** Sitio estático multi-página con estilos consistentes.
 
 ## 8. Restricciones y Supuestos
 
 ### Restricciones
 
-- **Presupuesto:** El proyecto debe operar dentro de los límites de los planes gratuitos de los servicios de terceros (GitHub, Formspree, Google Analytics).
+- **Presupuesto:** El proyecto debe operar dentro de los límites de los planes gratuitos de los servicios de terceros (GitHub, EmailJS, Google Analytics).
 - **Recursos:** El desarrollo será ejecutado por el equipo de agentes de BMAD.
 
 ### Supuestos Clave
@@ -84,9 +84,9 @@
 
 ### Riesgos Clave
 
-- **Técnico:** Una configuración incorrecta de DNS, Formspree o Google Analytics podría causar que partes del sitio no funcionen.
+- **Técnico:** Una configuración incorrecta de DNS, de las claves de EmailJS o del script de Google Analytics podría causar que partes del sitio no funcionen.
 - **Dependencia:** Cambios en los términos de los servicios gratuitos de terceros podrían impactar el sitio a futuro.
 
 ### Preguntas Abiertas
 
-- ¿Cuál es el contenido exacto y el llamado a la acción para la página `gracias.html`?
+N/A
